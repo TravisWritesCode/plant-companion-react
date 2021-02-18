@@ -1,0 +1,115 @@
+
+.product-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.product-id {
+  font-size: .8em;
+  margin: 1em 0;
+}
+
+.product-edit-icon {
+  opacity: .7;
+  position: absolute;
+  right: 2.3rem;
+  top: .4rem;
+}
+
+.product-edit-icon:hover {
+  opacity: 1;
+}
+
+.navbar, .navbar-end, .navbar-menu, .navbar-start {
+  align-items: stretch !important;
+  display: flex !important;
+}
+
+.navbar-menu {
+  flex-grow: 1 !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.navbar-item {
+  display: flex !important;
+}
+
+.navbar-end {
+  justify-content: flex-end !important;
+  margin-left: auto !important;
+}
+
+.features {
+  padding-bottom: 3em;
+}
+
+body {
+  visibility: visible !important;
+}
+
+
+.auth form {
+  margin-top: 2em;
+  width: 50%;
+  display: inline-block;
+}
+
+.buttons {
+  margin-left: 1em;
+}
+
+@font-face {
+  font-family: LittleSpark;
+  src: url("assets/fonts/KGALittleSpark.ttf");
+}
+
+html {
+  height: 100%;
+  background: linear-gradient(45deg, palegreen 25%, seagreen 70%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginDiv {
+  position: relative;
+  margin: auto;
+  width: 80%;
+  height: 100%;
+}
+
+.centerForm {
+  padding-top: 4em;
+  text-align: center;
+}
+
+.cultivaPhoto {
+  background-image: url("assets/images/LoginPhoto.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 50em;
+}
+
+h1 {
+  font-family: LittleSpark;
+  color: white;
+  font-size: 2cm;
+}
+
+h3 {
+  color: white;
+}
+
+.submitButton {
+  background: linear-gradient(0deg, palegreen, seagreen);
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.is-primary {
+  background-color: #24D160 !important;
+}
