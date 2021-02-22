@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
     let statusCode = 0;
 
     const params = {
-        TableName: "Pots"
+        TableName: "Pot"
     };
 
     try{

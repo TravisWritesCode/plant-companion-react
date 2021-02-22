@@ -7,14 +7,18 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
+    const {CognitoID, timestamp, PotID, sensorData } = JSON.parse(event.body);
+
     const params = {
-        TableName: "Pots",
+        TableName: "Pot",
         Key: {
-            PotID: "12346"
+            CognitoID: CognitoID,
+            timestamp: timestamp
         },
-        UpdateExpression: "set Nickname = :n",
+        UpdateExpression: "set PotID = :p, sensorData = :s",
         ExpressionAttributeValues:{
-            ":n": "tom2"
+            ":p": PotID,
+            ":s": sensorData
         },
         ReturnValues:"UPDATED_NEW"
     };

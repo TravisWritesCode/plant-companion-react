@@ -7,13 +7,15 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
+    const{ CognitoID, timestamp, PotID, sensorData} = JSON.parse(event.body);
+
     const params = {
-        TableName: "Pots",
+        TableName: "Pot",
         Item: {
-            PotID: "12345",
-            Nickname: "tom",
-            SensorID: "asdasds-216135161-0165",
-            Species: "Extremely Dope Ass Plant",
+            CognitoID: CognitoID,
+            timestamp: timestamp,
+            PotID:PotID,
+            sensorData: sensorData
         }
     };
 

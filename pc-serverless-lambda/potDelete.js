@@ -7,10 +7,13 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
+    const {CognitoID, timestamp} = JSON.parse(event.body);
+
     const params = {
-        TableName: "Pots",
+        TableName: "Pot",
         Key: {
-            PotID: "12345"
+            CognitoID: CognitoID,
+            timestamp: timestamp
         }
     };
 

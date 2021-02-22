@@ -1,53 +1,55 @@
 import React, { Component, Fragment } from 'react';
-import Product from './Product';
+import Pot from './Pot';
 import axios from "axios";
 const config = require('../config.json');
 
-export default class Products extends Component {
+export default class Pots extends Component {
 
   state = {
-    newproduct: null,
-    products: []
+    newpot: null,
+    pots: []
   }
 
-  fetchProducts = async () => {
-    // add call to AWS API Gateway to fetch products here
+  fetchPots = async () => {
+    // add call to AWS API Gateway to fetch pots here
     // then set them in state
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/products`);
-      const products = res.data;
-      this.setState({ products: products });
+      const res = await axios.get(`${config.api.invokeUrl}/pot`);
+      const pots = res.data;
+      console.log(pots)
+      this.setState({ pots: pots});
     } catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
 
   componentDidMount = () => {
-    this.fetchProducts();
+    this.fetchPots();
   }
+
+   
 
   render() {
     return (
       <Fragment>
         <section className="section">
-          <div className="container">
-            <h1>Your Pots</h1>
-            <p className="subtitle is-5">Here is a list of the pots you have registered:</p>
-            <br />
-            <div className="columns">
-              <div className="column">
-                <div className="tile is-ancestor">
-                  <div className="tile is-4 is-parent  is-vertical">
-                    { 
-                      this.state.products && this.state.products.length > 0
-                      ? this.state.products.map(product => <Product name={product.productname} id={product.id} key={product.id} />)
-                      : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
-                    }
-                  </div>
+          <div className="container" >
+          {this.props.auth.isAuthenticated && this.props.auth.user && (
+                <h1 className="pTitle">Welcome Back, {this.props.auth.user.username} </h1>
+              )}
+            <div className="potsContainer">
+              <h1>Your Pots</h1>
+              <p className="subtitle is-5" style={{color:"#FFFFFF"}}>Here is a list of the pots you have registered:</p>
+              <br />
+                <div class="pContainer">
+                      { 
+                        this.state.pots && this.state.pots.length > 0
+                        ? this.state.pots.map(pot => <Pot CognitoID={pot.CognitoID} PotID={pot.PotID} timestamp={pot.timestamp} nickname={pot.nickname} {...pot.sensorData} key={pot.CognitoID} />)
+                        : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
+                      }
                 </div>
               </div>
             </div>
-          </div>
         </section>
       </Fragment>
     )
