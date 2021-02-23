@@ -1,8 +1,7 @@
 import React, { Component, Fragment, useEffect }  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-
+import axios from "axios";
+const config = require('../config.json');
 
 export default class PotAdmin extends Component {
    
@@ -20,6 +19,19 @@ export default class PotAdmin extends Component {
     event.preventDefault();
     this.setState({ isEditMode: false });
     this.props.handleUpdatePot(this.props.id, this.state.updatedpotname);
+  }
+
+  fetchPots = async () => {
+    // add call to AWS API Gateway to fetch pots here
+    // then set them in state
+    try {
+      const res = await axios.get(`${config.api.invokeUrl}/pot`);
+      const pots = res.data;
+      console.log(pots)
+      this.setState({ pots: pots});
+    } catch (err) {
+      console.log(`An error has occurred: ${err}`);
+    }
   }
 
   onAddPotNameChange = event => this.setState({ "updatedpotname": event.target.value });
