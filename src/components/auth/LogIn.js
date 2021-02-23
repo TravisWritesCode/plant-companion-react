@@ -41,7 +41,7 @@ class LogIn extends Component {
       console.log(user);
       this.props.auth.setAuthStatus(true);
       this.props.auth.setUser(user);
-      this.props.history.push("/dashboard");
+      this.props.history.push("/pots");
     }catch(error) {
       let err = null;
       !error.message ? err = { "message": error} : err = error;
