@@ -1,81 +1,81 @@
 import React, { Component, Fragment } from 'react';
-import Pot from './Pot';
+import Product from './Product';
 import axios from "axios";
 const config = require('../config.json');
 
 export default class AddPot extends Component {
 
   state = {
-    newpot: { 
-      "potname": "", 
+    newproduct: { 
+      "productname": "", 
       "id": ""
     },
-    pot: []
+    products: []
   }
 
-  handleAddPot = async (id, event) => {
+  handleAddProduct = async (id, event) => {
     event.preventDefault();
-    // add call to AWS API Gateway add pot endpoint here
+    // add call to AWS API Gateway add product endpoint here
     try {
       const params = {
         "id": id,
-        "potname": this.state.newpot.potname
+        "productname": this.state.newproduct.productname
       };
-      await axios.post(`${config.api.invokeUrl}/pots/${id}`, params);
-      this.setState({ pots: [...this.state.pots, this.state.newpot] });
-      this.setState({ newpot: { "potname": "", "id": "" }});
+      await axios.post(`${config.api.invokeUrl}/products/${id}`, params);
+      this.setState({ products: [...this.state.products, this.state.newproduct] });
+      this.setState({ newproduct: { "productname": "", "id": "" }});
     }catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
 
-  handleUpdatePot = async (id, name) => {
-    // add call to AWS API Gateway update pot endpoint here
+  handleUpdateProduct = async (id, name) => {
+    // add call to AWS API Gateway update product endpoint here
     try {
       const params = {
         "id": id,
-        "potname": name
+        "productname": name
       };
-      await axios.patch(`${config.api.invokeUrl}/pots/${id}`, params);
-      const potToUpdate = [...this.state.pots].find(pot => pot.id === id);
-      const updatedPots = [...this.state.pots].filter(pot => pot.id !== id);
-      potToUpdate.potname = name;
-      updatedPots.push(potToUpdate);
-      this.setState({pots: updatedPots});
+      await axios.patch(`${config.api.invokeUrl}/products/${id}`, params);
+      const productToUpdate = [...this.state.products].find(product => product.id === id);
+      const updatedProducts = [...this.state.products].filter(product => product.id !== id);
+      productToUpdate.productname = name;
+      updatedProducts.push(productToUpdate);
+      this.setState({products: updatedProducts});
     }catch (err) {
-      console.log(`Error updating pot: ${err}`);
+      console.log(`Error updating product: ${err}`);
     }
   }
 
-  handleDeletePot = async (id, event) => {
+  handleDeleteProduct = async (id, event) => {
     event.preventDefault();
-    // add call to AWS API Gateway delete pot endpoint here
+    // add call to AWS API Gateway delete product endpoint here
     try {
-      await axios.delete(`${config.api.invokeUrl}/pots/${id}`);
-      const updatedPots = [...this.state.pots].filter(pot => pot.id !== id);
-      this.setState({pots: updatedPots});
+      await axios.delete(`${config.api.invokeUrl}/products/${id}`);
+      const updatedProducts = [...this.state.products].filter(product => product.id !== id);
+      this.setState({products: updatedProducts});
     }catch (err) {
-      console.log(`Unable to delete pot: ${err}`);
+      console.log(`Unable to delete product: ${err}`);
     }
   }
 
-  fetchPots = async () => {
-    // add call to AWS API Gateway to fetch pots here
+  fetchProducts = async () => {
+    // add call to AWS API Gateway to fetch products here
     // then set them in state
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/pot`);
-      const pots = res.data;
-      this.setState({ pots: pots });
+      const res = await axios.get(`${config.api.invokeUrl}/products`);
+      const products = res.data;
+      this.setState({ products: products });
     } catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
 
-  onAddPotNameChange = event => this.setState({ newpot: { ...this.state.newpot, "potname": event.target.value } });
-  onAddPotIdChange = event => this.setState({ newpot: { ...this.state.newpot, "id": event.target.value } });
+  onAddProductNameChange = event => this.setState({ newproduct: { ...this.state.newproduct, "productname": event.target.value } });
+  onAddProductIdChange = event => this.setState({ newproduct: { ...this.state.newproduct, "id": event.target.value } });
 
   componentDidMount = () => {
-    this.fetchPots();
+    this.fetchProducts();
   }
 
   render() {
@@ -88,15 +88,15 @@ export default class AddPot extends Component {
             <br />
             <div className="columns">
               <div className="column is-one-third">
-                <form onSubmit={event => this.handleAddPot(this.state.newpot.id, event)}>
+                <form onSubmit={event => this.handleAddProduct(this.state.newproduct.id, event)}>
                   <div className="field has-addons">
                     <div className="control">
                       <input 
                         className="input is-medium"
                         type="text" 
                         placeholder="Enter name"
-                        value={this.state.newpot.potname}
-                        onChange={this.onAddPotNameChange}
+                        value={this.state.newproduct.productname}
+                        onChange={this.onAddProductNameChange}
                       />
                     </div>
                     <div className="control">
@@ -104,13 +104,13 @@ export default class AddPot extends Component {
                         className="input is-medium"
                         type="text" 
                         placeholder="Enter id"
-                        value={this.state.newpot.id}
-                        onChange={this.onAddPotIdChange}
+                        value={this.state.newproduct.id}
+                        onChange={this.onAddProductIdChange}
                       />
                     </div>
                     <div className="control">
                       <button type="submit" className="button is-primary is-medium">
-                        Add pot
+                        Add product
                       </button>
                     </div>
                   </div>
@@ -120,14 +120,14 @@ export default class AddPot extends Component {
                 <div className="tile is-ancestor">
                   <div className="tile is-4 is-parent  is-vertical">
                     { 
-                      this.state.pots.map((pot, index) => 
-                        <Pot 
+                      this.state.products.map((product, index) => 
+                        <Product 
                           isAdmin={true}
-                          handleUpdatePot={this.handleUpdatePot}
-                          handleDeletePot={this.handleDeletePot} 
-                          name={pot.potname} 
-                          id={pot.id}
-                          key={pot.id}
+                          handleUpdateProduct={this.handleUpdateProduct}
+                          handleDeleteProduct={this.handleDeleteProduct} 
+                          name={product.productname} 
+                          id={product.id}
+                          key={product.id}
                         />)
                     }
                   </div>
