@@ -86,6 +86,7 @@ body {
 .centerForm {
   padding-top: 4em;
   text-align: center;
+  
 }
 
 .potsContainer{
@@ -138,7 +139,10 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   min-height: 50em;
+  min-width: 80%;
 }
+
+
 
 .plantPhoto{
   display: block;

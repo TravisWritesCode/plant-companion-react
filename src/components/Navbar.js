@@ -19,9 +19,9 @@ export default class Navbar extends Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/dashboard">
+          <div className="navbar-item" >
             <img src="pot.png" alt="PC Logo" />
-          </a>
+          </div>
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">
@@ -32,10 +32,10 @@ export default class Navbar extends Component {
             </a>
             {/*<a href="/pots" className="navbar-item">
               Pots
-            </a>*/}
+            </a>
             <a href="/addpot" className="navbar-item">
               Add Pot
-            </a>
+            </a>*/}
           </div>
         )}
 
