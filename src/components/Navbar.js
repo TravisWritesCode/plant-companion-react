@@ -6,9 +6,10 @@ export default class Navbar extends Component {
   handleLogOut = async event => {
     event.preventDefault();
     try {
-      Auth.signOut();
+      Auth.signOut();      
       this.props.auth.setAuthStatus(false);
-      this.props.auth.setUser(null);
+      this.props.auth.setUser(null);  
+      // this.history.push("/login")
     }catch(error) {
       console.log(error.message);
     }
@@ -18,29 +19,31 @@ export default class Navbar extends Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/dashboard">
+          <div className="navbar-item" >
             <img src="pot.png" alt="PC Logo" />
-          </a>
+          </div>
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">
+        {this.props.auth.isAuthenticated && (
           <div className="navbar-start">
-            <a href="/" className="navbar-item">
+            <a href="/pots" className="navbar-item">
               Home
             </a>
-            <a href="/pots" className="navbar-item">
+            {/*<a href="/pots" className="navbar-item">
               Pots
             </a>
             <a href="/addpot" className="navbar-item">
               Add Pot
-            </a>
+            </a>*/}
           </div>
+        )}
 
           <div className="navbar-end">
             <div className="navbar-item">
-              {this.props.auth.isAuthenticated && this.props.auth.user && (
+              {/*this.props.auth.isAuthenticated && this.props.auth.user && (
                 <p>Hello {this.props.auth.user.username}</p>
-              )}
+              )*/}
               <div className="buttons">
                 
                 {/* Hide login and register buttons if user is logged in */}

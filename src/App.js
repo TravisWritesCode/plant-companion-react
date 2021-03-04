@@ -62,8 +62,12 @@ class App extends Component {
           <div>
             <Navbar auth={authProps} />
             <Switch>
-              <Route exact path="/" render={(props) => <LogIn {...props} auth={authProps} />} />
-              <Route exact path="/dashboard" render={(props) => <Home {...props} auth={authProps} />} />
+              {
+              !authProps.isAuthenticated
+              ?<Route exact path="/" render={(props) => <LogIn {...props} auth={authProps} />} />
+              :<Route exact path="/" render={(props) => <Pots {...props} auth={authProps} />} />
+              }
+              {/*<Route exact path="/dashboard" render={(props) => <Home {...props} auth={authProps} />} />*/}
               <Route exact path="/pots" render={(props) => <Pots {...props} auth={authProps} />} />
               <Route exact path="/addpot" render={(props) => <AddPot {...props} auth={authProps} />} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} />} />
