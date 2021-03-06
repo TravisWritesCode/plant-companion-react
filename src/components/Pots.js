@@ -61,7 +61,7 @@ export default class Pots extends Component {
                         //TODO: Before painting a pot to the screen check to see if the pot's ID is in the array.
                         //      If it is not paint the pot, else skip the pot 
                         this.state.pots && this.state.pots.length > 0
-                        ? this.state.pots.map(pot => <Pot CognitoID={pot.CognitoID} PotID={pot.PotID} timestamp={pot.timestamp} nickname={pot.nickname} {...pot.sensorData} key={pot.CognitoID} />)
+                        ? this.state.pots.map(pot => <Pot userName={pot.userName} potId={pot.potId} timestamp={pot.timestamp} potName={pot.potName} plantType={pot.plantType} {...pot.sensorData}/>)
                         : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
                       }
                 </div>
