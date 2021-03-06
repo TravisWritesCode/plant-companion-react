@@ -9,6 +9,8 @@ export default class Navbar extends Component {
       Auth.signOut();      
       this.props.auth.setAuthStatus(false);
       this.props.auth.setUser(null);  
+      await Auth.signOut();
+      console.log((await Auth.currentSession())["accessToken"]["jwtToken"])
       // this.history.push("/login")
     }catch(error) {
       console.log(error.message);

@@ -11,7 +11,7 @@ export default class PotAdmin extends Component {
    
   state = {
     isEditMode: false,
-    updatedpotname: this.props.CognitoID
+    updatedpotname: this.props.potName
   }
 
   handlePotEdit = event => {
@@ -84,7 +84,8 @@ export default class PotAdmin extends Component {
               >save</button>
             </div>
           : <div>
-              <p className="PlantName">{this.props.nickname}</p>
+              <p className="PlantName">{this.props.potName}</p>
+              <p className="plantType">{this.props.plantType}</p>
 
                 <div className="PlantLevels">
                 <h4>Temperature: {this.props.temp}&deg;F</h4>
