@@ -41,7 +41,6 @@ class LogIn extends Component {
       console.log(user);
       this.props.auth.setAuthStatus(true);
       this.props.auth.setUser(user);
-      console.log((await Auth.currentSession())["accessToken"]["jwtToken"])
       this.props.history.push("/pots");
     }catch(error) {
       let err = null;

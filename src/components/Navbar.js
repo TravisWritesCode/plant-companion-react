@@ -1,17 +1,18 @@
 import { Auth } from 'aws-amplify';
 import React, { Component } from 'react'
+// const history = useHistory();
+// import { useHistory } from "react-router-dom";
 
 export default class Navbar extends Component {
   
   handleLogOut = async event => {
     event.preventDefault();
     try {
-      Auth.signOut();      
+
       this.props.auth.setAuthStatus(false);
       this.props.auth.setUser(null);  
-      await Auth.signOut();
-      console.log((await Auth.currentSession())["accessToken"]["jwtToken"])
-      // this.history.push("/login")
+      await Auth.signOut()
+      .then(data => document.location.href = "/login")
     }catch(error) {
       console.log(error.message);
     }

@@ -16,7 +16,9 @@ import Footer from './components/Footer';
 import { Auth } from "aws-amplify";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { createBrowserHistory } from "history";
 library.add(faEdit);
+
 
 class App extends Component {
 
@@ -55,12 +57,14 @@ class App extends Component {
       setUser: this.setUser
     }
 
+    const history = createBrowserHistory();
+
     return (
       !this.state.isAuthenticating &&
       <div className="App">
         <Router>
           <div>
-            <Navbar auth={authProps} />
+            <Navbar auth={authProps} history={history}/>
             <Switch>
               {
               !authProps.isAuthenticated
