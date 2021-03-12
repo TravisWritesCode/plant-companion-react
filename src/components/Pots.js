@@ -49,7 +49,7 @@ export default class Pots extends Component {
         <section className="section">
           <div className="container" >
           {this.props.auth.isAuthenticated && this.props.auth.user && (
-                <h1 className="pTitle">Welcome Back, {this.props.auth.user.username} </h1>
+                <h1 className="pTitle">Welcome, {this.props.auth.user.username} </h1>
               )}
             <div className="potsContainer">
               <h1>Your Pots</h1>
