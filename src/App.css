@@ -107,7 +107,7 @@ body {
 }
 
 .PlantName{
-  text-align: right;
+  text-align: left;
   position: absolute;
   font-weight: bold;
   padding: 10px 0 0 20px; ;
