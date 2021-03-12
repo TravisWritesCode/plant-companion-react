@@ -51,8 +51,8 @@
 
 body {
   visibility: visible !important;
-  height: 100%;
-  background: linear-gradient(45deg, palegreen 25%, seagreen 70%);
+  min-height: 100%;
+  background: linear-gradient(to top right, palegreen 25%, seagreen 70%);
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
