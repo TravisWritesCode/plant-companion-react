@@ -104,6 +104,7 @@ body {
   width: fit-content;
   grid-gap:10px;
   height: fit-content;
+  font-size:50px;
 }
 
 .PlantName{
