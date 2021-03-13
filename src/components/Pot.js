@@ -88,10 +88,10 @@ export default class PotAdmin extends Component {
               <p className="plantType">{this.props.plantType}</p>
 
                 <div className="PlantLevels">
-                <h4>Temperature: {this.props.temp}&deg;F</h4>
-                    <h4>Reservoir Level: {this.props.reservoirLevel}</h4>
-                    <h4>Moisture: {this.props.soilMoisture}</h4>
-                    <h4>Sun: {this.props.photosensor}</h4>
+                    <h3>Temperature: {this.props.temp}&deg;F</h3>
+                    <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
+                    <h3>Moisture: {this.props.soilMoisture}</h3>
+                    <h3>Sun: {this.props.photosensor}</h3>
                 </div>
             </div>
         }
