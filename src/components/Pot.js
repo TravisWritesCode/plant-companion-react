@@ -84,7 +84,7 @@ export default class PotAdmin extends Component {
               >save</button>
             </div>
           : <div>
-              <p className="PlantName">{this.props.potName}</p>
+              <p className="PlantName"><a href="/pothistory">{this.props.potName}</a></p>
               <p className="plantType">{this.props.plantType}</p>
 
                 <div className="PlantLevels">

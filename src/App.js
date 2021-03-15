@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Pots from './components/Pots';
+
+import PotHistory from './components/PotHistory';
+
 import AddPot from './components/AddPot';
 import Home from './components/Home';
 import LogIn from './components/auth/LogIn';
@@ -73,6 +76,9 @@ class App extends Component {
               }
               {/*<Route exact path="/dashboard" render={(props) => <Home {...props} auth={authProps} />} />*/}
               <Route exact path="/pots" render={(props) => <Pots {...props} auth={authProps} />} />
+
+              <Route exact path="/pothistory" render={(props) => <PotHistory {...props} auth={authProps} />} />
+              
               <Route exact path="/addpot" render={(props) => <AddPot {...props} auth={authProps} />} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} />} />
               <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} />} />
