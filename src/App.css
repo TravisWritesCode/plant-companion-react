@@ -108,9 +108,8 @@ body {
 }
 
 .pContainer{
-  /*display: grid;
-   grid-template-columns: auto;
-  */
+  display: grid;
+  grid-template-columns: auto auto;
   width: fit-content;
   grid-gap:10px;
   height: fit-content;
@@ -153,6 +152,21 @@ body {
   grid-gap: 5%;
   bottom:5%;
   left: 15%;*/
+}
+
+.PotHistoryContainer{
+  padding: 15px 10px 15px 30px;
+  background-color: #2e3831cc;
+  border-radius: 25px;
+  width: 100%;
+  margin: auto;
+}
+
+.PotHistory {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  color: #FFFFFF;
+  font-size: large;
 }
 
 .PlantLevels h3{

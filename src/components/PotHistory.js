@@ -46,9 +46,28 @@ export default class Pots extends Component {
   render() {
     return (
       <Fragment>
-        <section className="section">
-          
+        <div className = "container">
+        {this.props.auth.isAuthenticated && this.props.auth.user && (
+                <h1 className="pTitle">Welcome Back, {this.props.auth.user.username} </h1>
+              )}
+        <section className="PotHistoryContainer">
+        <h1>Pot History</h1>
+              <p className="subtitle is-5" style={{color:"#FFFFFF"}}>Here is the history for this pot:</p>
+        <div className="PotHistory">
+                    <h3>Time: </h3>
+                    <h3>Temperature: {this.props.temp}&deg;F</h3>
+                    <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
+                    <h3>Moisture: {this.props.soilMoisture}</h3>
+                    <h3>Sun: {this.props.photosensor}</h3>
+                    <h3>Time: </h3>
+                    <h3>Temperature: {this.props.temp}&deg;F</h3>
+                    <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
+                    <h3>Moisture: {this.props.soilMoisture}</h3>
+                    <h3>Sun: {this.props.photosensor}</h3>                
+                </div>
+                
         </section>
+        </div>
       </Fragment>
     )
   }
