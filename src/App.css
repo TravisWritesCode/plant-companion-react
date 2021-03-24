@@ -51,6 +51,7 @@
 
 html {
   min-height: 100%;
+  width: 100%;
   background: linear-gradient(to top right, palegreen 25%, seagreen 70%);
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,6 +60,7 @@ html {
 body {
   visibility: visible !important;
   height: 100%;
+  width: 100%;
   /*
   background: linear-gradient(to top right, palegreen 25%, seagreen 70%);
   background-repeat: no-repeat;
@@ -99,9 +101,10 @@ body {
 }
 
 .potsContainer{
-  padding: 15px 10px 15px 30px;
+  padding: 15px 10px 15px 30px; 
   background-color: #2e3831cc;
   border-radius: 25px;
+  margin: auto;
   width: fit-content;
   height: fit-content;
   color: #FFFFFF;
@@ -158,15 +161,24 @@ body {
   padding: 15px 10px 15px 30px;
   background-color: #2e3831cc;
   border-radius: 25px;
-  width: 100%;
+  width: fit-content;
   margin: auto;
 }
 
 .PotHistory {
+  width: fit-content;
+}
+
+.PotHistoryEntry {
+  padding: 15px 30px 15px 30px;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
+  grid-gap: 60px;
   color: #FFFFFF;
-  font-size: large;
+  font-size: x-large;
+  background-color: #24D160CC;
+  border-radius: 25px;
+  margin:8px 0 0 0 ;
 }
 
 .PlantLevels h3{
