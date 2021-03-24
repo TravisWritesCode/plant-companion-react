@@ -20,18 +20,6 @@ export default class Pots extends React.Component {
     });
   };
 
-  render(){
-    return(
-        <div>
-          <div className="btn" onClick={this.togglePop}>
-            <button>New Pot?</button>
-          </div>
-          {this.state.newpot ? <PopUp toggle={this.togglePop} /> : null}
-        </div>
-    );
-  }
-}
-
   fetchPots = async () => {
     // add call to AWS API Gateway to fetch pots here
     // then set them in state
@@ -86,6 +74,17 @@ export default class Pots extends React.Component {
                 </div>
               </div>
             </div>
+  render(){
+    return(
+        <div>
+          <div className="btn" onClick={this.togglePop}>
+            <button>New Pot?</button>
+          </div>
+          {this.state.newpot ? <PopUp toggle={this.togglePop} /> : null}
+        </div>
+    );
+  }
+}
         </section>
       </Fragment>
     )
