@@ -10,7 +10,6 @@ const config = require('../config.json');
 export default class Pots extends React.Component {
 
   state = {
-    newpot: null,
     pots: []
   };
 
@@ -23,19 +22,13 @@ export default class Pots extends React.Component {
   fetchPots = async () => {
     // add call to AWS API Gateway to fetch pots here
     // then set them in state
-    // try {
-    //   const res = await axios.get(`${config.api.invokeUrl}/pot`);
-    //   const pots = res.data;
-    //   this.setState({ pots: pots});
-    // } catch (err) {
-    //   console.log(`An error has occurred: ${err}`);
-    // }
     try {
       const AccessToken = (await Auth.currentSession())["accessToken"]["jwtToken"]
-      const reqBody = {
-        "AccessToken" : AccessToken
-      }
-      const res = await axios.post(`${config.api.devApiUrl}/pots`, reqBody);
+      const res = await axios.get(`${config.api.devApiUrl}/pot`,{
+        headers: {
+          "Authorization": `${AccessToken}`,
+        }
+      });
       const pots = JSON.parse(res.data.body);
       console.log(pots)
       this.setState({ pots: pots});
@@ -48,7 +41,6 @@ export default class Pots extends React.Component {
     this.fetchPots();
   }
 
-   
 
   render() {
     return (
@@ -70,9 +62,9 @@ export default class Pots extends React.Component {
                         this.state.pots && this.state.pots.length > 0
                         ? this.state.pots.map(pot => <Pot userName={pot.userName} potId={pot.potId} timestamp={pot.timestamp} potName={pot.potName} plantType={pot.plantType} {...pot.sensorData}/>)
                         : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
-                        : <div className="btn" onClick={this.togglePop}>
-                            <button>New User?</button></div>
-                            {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}</div>
+                        // : <div className="btn" onClick={this.togglePop}>
+                        //     <button>New User?</button></div>
+                        //     {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}</div>
                       }
                 </div>
               </div>

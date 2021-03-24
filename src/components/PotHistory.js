@@ -18,26 +18,14 @@ export default class PotHistoryPage extends Component {
   fetchPots = async () => {
     // add call to AWS API Gateway to fetch pots here
     // then set them in state
-    // try {
-    //   const res = await axios.get(`${config.api.invokeUrl}/pot`);
-    //   const pots = res.data;
-    //   this.setState({ pots: pots});
-    // } catch (err) {
-    //   console.log(`An error has occurred: ${err}`);
-    // }
     try {
       const AccessToken = (await Auth.currentSession())["accessToken"]["jwtToken"]
-      const reqBody = {
-        "AccessToken" : AccessToken,
-        //"PotId": '567'
-      }
-      const res = await axios.post(`${config.api.devApiUrl}/pots`, reqBody);
-      //const res = await axios.get(`${config.api.devApiUrl}/pot`,  {
-      //  headers: {
-      //    "Authorization": '${AccessToken}',
-      //    "PotId": '567'
-      //  } 
-      //});
+      const res = await axios.get(`${config.api.devApiUrl}/pot`,  {
+        headers: {
+          "Authorization": `${AccessToken}`,
+          "PotId": '123'
+        } 
+      });
       const potData = JSON.parse(res.data.body);
       console.log(potData)
       this.setState({ potData: potData});
