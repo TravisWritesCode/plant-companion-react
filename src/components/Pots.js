@@ -7,12 +7,12 @@ import { Auth } from "aws-amplify"
 
 const config = require('../config.json');
 
-export default class Pots extends Component {
+export default class Pots extends React.Component {
 
   state = {
     newpot: null,
     pots: []
-  }
+  };
 
   togglePop = () => {
     this.setState({
@@ -23,13 +23,14 @@ export default class Pots extends Component {
   render(){
     return(
         <div>
-          <div className-"btn" onClick={this.togglePop}>
+          <div className="btn" onClick={this.togglePop}>
             <button>New Pot?</button>
           </div>
           {this.state.newpot ? <PopUp toggle={this.togglePop} /> : null}
         </div>
     );
   }
+}
 
   fetchPots = async () => {
     // add call to AWS API Gateway to fetch pots here
