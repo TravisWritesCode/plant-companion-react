@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Pot from './Pot';
+import Popup from "./PopUp";
 import axios from "axios";
 import { Auth } from "aws-amplify"
 
@@ -11,6 +12,23 @@ export default class Pots extends Component {
   state = {
     newpot: null,
     pots: []
+  }
+
+  togglePop = () => {
+    this.setState({
+      newpot: !this.state.newpot
+    });
+  };
+
+  render(){
+    return(
+        <div>
+          <div className-"btn" onClick={this.togglePop}>
+            <button>New Pot?</button>
+          </div>
+          {this.state.newpot ? <PopUp toggle={this.togglePop} /> : null}
+        </div>
+    );
   }
 
   fetchPots = async () => {
@@ -64,10 +82,6 @@ export default class Pots extends Component {
                         ? this.state.pots.map(pot => <Pot userName={pot.userName} potId={pot.potId} timestamp={pot.timestamp} potName={pot.potName} plantType={pot.plantType} {...pot.sensorData}/>)
                         : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
                       }
-                      <script type="text/javascript">
-//note that this case can be used only inside the "body" element
-document.write('<a href="'+desiredLink+'">'+desiredText+'</a>');
-</script>
                 </div>
               </div>
             </div>
