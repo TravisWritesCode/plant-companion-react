@@ -64,6 +64,10 @@ export default class Pots extends Component {
                         ? this.state.pots.map(pot => <Pot userName={pot.userName} potId={pot.potId} timestamp={pot.timestamp} potName={pot.potName} plantType={pot.plantType} {...pot.sensorData}/>)
                         : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
                       }
+                      <script type="text/javascript">
+//note that this case can be used only inside the "body" element
+document.write('<a href="'+desiredLink+'">'+desiredText+'</a>');
+</script>
                 </div>
               </div>
             </div>
