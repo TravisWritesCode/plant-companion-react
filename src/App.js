@@ -76,9 +76,7 @@ class App extends Component {
               }
               {/*<Route exact path="/dashboard" render={(props) => <Home {...props} auth={authProps} />} />*/}
               <Route exact path="/pots" render={(props) => <Pots {...props} auth={authProps} />} />
-
               <Route exact path="/pothistory" render={(props) => <PotHistory {...props} auth={authProps} />} />
-              
               <Route exact path="/addpot" render={(props) => <AddPot {...props} auth={authProps} />} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} />} />
               <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} />} />
