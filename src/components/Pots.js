@@ -41,7 +41,6 @@ export default class Pots extends React.Component {
     this.fetchPots();
   }
 
-
   render() {
     return (
       <Fragment>

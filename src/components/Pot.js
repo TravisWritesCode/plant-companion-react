@@ -7,7 +7,7 @@ export default class PotAdmin extends Component {
   
   
   render() { 
-    const data = this.props.sensorData
+    const data = this.props
     console.log(data)
     return (
       <Fragment>
