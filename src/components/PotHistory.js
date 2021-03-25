@@ -19,7 +19,7 @@ export default class PotHistoryPage extends Component {
       const res = await axios.get(`${config.api.devApiUrl}/pot`,  {
         headers: {
           "Authorization": `${AccessToken}`,
-          "PotId": '123'
+          "PotId": `${this.props.location.state.potId}`
         } 
       });
       const potData = JSON.parse(res.data.body);
