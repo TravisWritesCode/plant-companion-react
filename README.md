@@ -1,6 +1,6 @@
-## Hexal Energy app
+## Live Application
 
-This is a starter ReactJS UI for my 'Create a Serverless App' tutorial series.
+https://master.dssqr4grl85rb.amplifyapp.com/
 
 ## Application Info
 
