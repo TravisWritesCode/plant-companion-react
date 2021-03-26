@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Pot from './Pot';
-import Popup from "./PopUp";
+import Popup from "./Popup";
 import axios from "axios";
 import { Auth } from "aws-amplify"
 
@@ -41,6 +41,17 @@ export default class Pots extends React.Component {
     this.fetchPots();
   }
 
+  constructor(props){
+    super(props);
+    this.state = { showPopup: false };
+  }
+
+  togglePopup() {
+    this.setState({
+     showPopup: !this.state.showPopup
+    });
+  }
+
   render() {
     return (
       <Fragment>
@@ -61,10 +72,15 @@ export default class Pots extends React.Component {
                         this.state.pots && this.state.pots.length > 0
                         ? this.state.pots.map(pot => <Pot userName={pot.userName} potId={pot.potId} timestamp={pot.timestamp} potName={pot.potName} plantType={pot.plantType} {...pot.sensorData}/>)
                         : <div className="tile notification is-warning">You dont have any pots registered yet.</div>
-                        // : <div className="btn" onClick={this.togglePop}>
-                        //     <button>New User?</button></div>
-                        //     {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}</div>
                       }
+                      <div>
+                        <button onClick={this.togglePopup.bind(this)}>Add Pots</button>
+                            {this.state.showPopup ?
+                        <Popup
+                            text='Add Pots'
+                            closePopup={this.togglePopup.bind(this)}/> : null
+                            }
+                      </div>
                 </div>
               </div>
             </div>
