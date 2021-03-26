@@ -22,7 +22,7 @@ export default class PotHistoryPage extends Component {
           "PotId": `${this.props.location.state.potId}`
         } 
       });
-      const potData = JSON.parse(res.data.body);
+      const potData = res.data.body;
       console.log(potData)
       this.setState({ potData: potData});
     } 

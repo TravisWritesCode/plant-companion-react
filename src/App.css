@@ -246,6 +246,7 @@ a {
   bottom: 0;
   margin: auto;
   background-color: rgba(0,0,0, 0.5);
+  z-index: 100;
 }
 .popup_open {
   position: absolute;
@@ -257,4 +258,10 @@ a {
   border-radius: 20px;
   background: white;
   color: black;
+  width: 500px;
+  padding: 20px;
+}
+
+.popupButton {
+  margin-top: 5px;
 }
