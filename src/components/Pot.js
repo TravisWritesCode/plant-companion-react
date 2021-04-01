@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class PotAdmin extends Component {
     soilMoistureOutput;
+    lightOutput;
   render() { 
     const data = this.props
       if (this.props.soilMoisture > 21500)
@@ -13,6 +14,13 @@ export default class PotAdmin extends Component {
           this.soilMoistureOutput = "Wet"
       else
           this.soilMoistureOutput = "Over-Watered"
+
+    if (this.props.photosensor > 1200)
+      this.lightOutput = "High"
+    else if (this.props.photosensor <= 1200 && this.props.photosensor > 250)
+      this.lightOutput = "Medium"
+    else
+      this.lightOutput = "Low"
     console.log(data)
 
     return (
@@ -24,7 +32,7 @@ export default class PotAdmin extends Component {
               <h3>Temperature: {this.props.temp}&deg;F</h3>
               <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
               <h3>Moisture: {this.soilMoistureOutput}</h3>
-              <h3>Sun: {this.props.photosensor}</h3>
+              <h3>Light: {this.lightOutput}</h3>
           </div>
         </div>
       </div>
