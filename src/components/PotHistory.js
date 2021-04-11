@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from "axios";
 import { Auth } from "aws-amplify"
 import PotHistoryData from './PotHistoryData';
+import EditPopup from "./EditPopup";
 const config = require('../config.json');
 
 export default class PotHistoryPage extends Component {
@@ -10,6 +11,12 @@ export default class PotHistoryPage extends Component {
   state = {
     potData: []
   }
+
+  togglePop = () => {
+    this.setState({
+      newpot: !this.state.newpot
+    });
+  };
 
   fetchPots = async () => {
     // add call to AWS API Gateway to fetch pots here
@@ -36,6 +43,17 @@ export default class PotHistoryPage extends Component {
   }
   /// fix ^ 
 
+  constructor(props){
+    super(props);
+    this.state = { showPopup: false };
+  }
+
+  togglePopup() {
+    this.setState({
+     showPopup: !this.state.showPopup
+    });
+  }
+
   render() {
     return (
       <Fragment>
@@ -44,6 +62,12 @@ export default class PotHistoryPage extends Component {
             <h1 className="pTitle">Welcome Back, {this.props.auth.user.username} </h1>
           )}
           <section className="PotHistoryContainer">
+          <div>
+
+            <button className="button is-primary" style={{marginBottom:"10px"}} onClick={this.togglePopup.bind(this)}>Edit Pot</button>
+              {this.state.showPopup ? this.state.potData.map(potData => <EditPopup  potId={potData.potId} potName={potData.potName} plantType={potData.plantType} text='Edit Pots' valueFromParent={this.state} closePopup={this.togglePopup.bind(this)}/>) : null }
+            </div>
+
             <h1>Pot History</h1>
             <p className="subtitle is-5" style={{color:"#FFFFFF"}}>Here is the history for {this.props.location.state.potName} the {this.props.location.state.plantType}:</p>
             <div className="PotHistory">
