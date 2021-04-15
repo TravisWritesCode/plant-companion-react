@@ -114,17 +114,23 @@ class Pagination extends React.Component {
 
         return (
             <ul className="pagination">
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
-                </li>
-                {pager.pages.map((page, index) =>
-                    <li key={index} className={pager.currentPage === page ? 'active' : ''}>
-                        <a onClick={() => this.setPage(page)}>{page}</a>
-                    </li>
-                )}
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-                </li>
+                <nav class="pagination" role="navigation" aria-label="pagination">
+                    <ul class="pagination-list" style={{paddingTop:"30px"}}>
+                        <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                            <a className="pagination-previous" onClick={() => this.setPage(pager.currentPage - 1)} style={{backgroundColor:"#00000090", color:"#FFFFFF"}}>Previous</a>
+                        </li>
+
+                        {pager.pages.map((page, index) =>
+                            <li key={index} className={pager.currentPage === page ? 'active': ''}>
+                                <a className="pagination-link" onClick={() => this.setPage(page)} style={{margin:"0"}}>{page}</a>
+                            </li>
+                        )}
+                        
+                        <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                            <a className="pagination-next"onClick={() => this.setPage(pager.currentPage + 1) } style={{backgroundColor:"#00000090", color:"#FFFFFF"}}>Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </ul>
         );
     }

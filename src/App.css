@@ -265,3 +265,12 @@ a {
 .popupButton {
   margin-top: 5px;
 }
+
+.active{
+  background-color: #3273dc;
+  border-radius: 4px !important;
+}
+
+.pagination-list li{
+  margin: 0 10px 0 10px !important;
+}
