@@ -3,6 +3,7 @@ import React, { Component, Fragment, useEffect }  from 'react';
 export default class PotHistoryData extends Component {
   soilMoistureOutput;
   lightOutput;
+  temp =0;
   render() { 
     const data = this.props.sensorData
     const dateData = this.props.timestamp
@@ -29,8 +30,8 @@ export default class PotHistoryData extends Component {
         <div>
           <div className="PotHistoryEntry">
             <h3>Date: {dateOutput}</h3>
-            <h3>Temperature: {this.props.temp}&deg;F</h3>
-            <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
+            {this.props.temp == "None" ?<h3>Temperature: {this.temp}&deg;F</h3>:<h3>Temperature: {this.props.temp}&deg;F</h3>}
+            {this.props.reservoirLevel == "None" ?<h3>Reservoir Level: {this.temp}</h3>:<h3>Reservoir Level: {this.props.reservoirLevel}</h3>}
             <h3>Moisture: {this.soilMoistureOutput}</h3>
             <h3>Light: {this.lightOutput}</h3>
           </div>

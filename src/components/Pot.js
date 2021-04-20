@@ -1,9 +1,31 @@
 import React, { Component, Fragment, useEffect }  from 'react';
 import { Link } from 'react-router-dom';
+import { Auth } from "aws-amplify";
+import axios from "axios";
+const config = require('../config.json')
 
 export default class PotAdmin extends Component {
     soilMoistureOutput;
     lightOutput;
+    temp = 0;
+
+    state={
+      bkg: `${process.env.PUBLIC_URL + "pot-bkg/PlantPhoto.png"}`
+    }
+
+    setBKG(){
+      const src = `${process.env.PUBLIC_URL}/pot-bkg/${this.props.plantType}.jpg`
+      axios.get(src).then((response) => {
+        this.setState({bkg: src});
+      }).catch((error) => {
+          console.log("Unable to retrive bkg")
+      })
+    }
+    
+    componentWillMount() {
+      this.setBKG();
+    }
+
   render() { 
     const data = this.props
       if (this.props.soilMoisture > 21500)
@@ -24,13 +46,13 @@ export default class PotAdmin extends Component {
     console.log(data)
 
     return (
-      <div className="plant plantPhoto">
-        <div>
+      <div className="plant plantPhoto" style={{backgroundImage: `url(${this.state.bkg})`}}>
+        <div>  
           <Link className="PlantName" to={{pathname:"/potHistory", state: data}}>{this.props.potName}</Link>
           <p className="plantType">{this.props.plantType}</p>
           <div className="PlantLevels">
-              <h3>Temperature: {this.props.temp}&deg;F</h3>
-              <h3>Reservoir Level: {this.props.reservoirLevel}</h3>
+              {this.props.temp == "None" ?<h3>Temperature: {this.temp}&deg;F</h3>:<h3>Temperature: {this.props.temp}&deg;F</h3>}
+              {this.props.reservoirLevel == "None" ?<h3>Reservoir Level: {this.temp}</h3>:<h3>Reservoir Level: {this.props.reservoirLevel}</h3>}
               <h3>Moisture: {this.soilMoistureOutput}</h3>
               <h3>Light: {this.lightOutput}</h3>
           </div>
