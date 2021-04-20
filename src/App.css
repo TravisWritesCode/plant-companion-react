@@ -126,6 +126,7 @@ body {
   color: #FFFFFF;
   font-size: 50px;
   z-index: 10;
+  -webkit-text-stroke: 1px black;
 }
 
 .plantType{
@@ -135,6 +136,7 @@ body {
   padding: 80px 0 0 20px; ;
   color: #FFFFFF;
   font-size: x-large;
+  -webkit-text-stroke: 1px black;
 }
 
 .PlantLevels {
