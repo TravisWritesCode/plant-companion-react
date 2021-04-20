@@ -14,7 +14,9 @@ export default class PotAdmin extends Component {
     }
 
     setBKG(){
-      const src = `${process.env.PUBLIC_URL}/pot-bkg/${this.props.plantType}.jpg`
+      var img = this.props.plantType
+      var temp = img.toLowerCase()
+      const src = `${process.env.PUBLIC_URL}/pot-bkg/${temp}.jpg`
       axios.get(src).then((response) => {
         this.setState({bkg: src});
       }).catch((error) => {
