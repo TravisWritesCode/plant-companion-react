@@ -27,25 +27,24 @@ export default class PotHistoryPage extends Component {
     // then set them in state
     try {
       const AccessToken = (await Auth.currentSession())["accessToken"]["jwtToken"]
-      const res = await axios.get(`${config.api.devApiUrl}/pot`,  {
+      const body = {potId: `${this.props.location.state.potId}`}
+      console.log(AccessToken);
+      const res = await axios.post(`${config.api.devApiUrl}/pots`, body,{
         headers: {
           "Authorization": `${AccessToken}`,
-          "PotId": `${this.props.location.state.potId}`
-        } 
+        }
       });
       const potData = res.data.body;
-      const itemsTest = [...Array(potData.length)].map(itemsTest => <PotHistoryData userName={potData.userName} potId={potData.potId} timestamp={potData.timestamp} potName={potData.potName} plantType={potData.plantType} {...potData.sensorData}/>);
       console.log(potData)
-      console.log(itemsTest)
+      console.log(res.data)
       this.setState({ potData: potData});
-
-
-
     } 
     catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
+
+
 
 
   componentDidMount = () => {
