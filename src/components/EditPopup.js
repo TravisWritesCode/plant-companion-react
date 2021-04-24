@@ -48,7 +48,24 @@ class EditPopup extends React.Component {
       console.log(`An error has occurred: ${err}`);
     }
   }
-  
+
+  handleDelete = async event => {
+    if (window.confirm("Are you sure you want to delete this pot?")){
+      try {
+        const reqBody = {"potId": parseInt(this.state.potId)}
+        const res = await axios.post(`${config.api.devApiUrl}/deletePot`, reqBody, {
+          headers: {
+            "Authorization": this.state.accessToken,
+          }
+        });
+      } catch (err) {
+        console.log(`An error has occurred: ${err}`);
+      }
+      window.location.href = "/pots"
+      this.props.closePopup()
+    }
+  }
+
   handleSubmit = async event=> {
     event.preventDefault();
     try {
@@ -80,10 +97,12 @@ class EditPopup extends React.Component {
         if (!this.state.potIsValid){
           alert("You entered an invalid pot ID.")
         }
+
       }
     } catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
+    //window.location.reload()
   }
 
   onInputChange = event => {
@@ -103,6 +122,7 @@ class EditPopup extends React.Component {
         <div className='popup'>
           <div className='popup_open'>
               <h2>{this.props.text}</h2>
+
                   <form>
 
                     <div className="field">
@@ -146,10 +166,14 @@ class EditPopup extends React.Component {
 
                   </form>
 
-                  <button className="button is-danger popupButton" onClick={this.props.closePopup}><strong>Cancel</strong></button>
-                  <button className="button is-success popupButton" onClick={this.handleSubmit} style={{"marginLeft": "5px"}}><strong>Submit</strong></button>
+                  <div>
+                    <button className="button is-danger popupButton" onClick={this.props.closePopup}><strong>Cancel</strong></button>
+                    <button className="button is-success popupButton" onClick={this.handleSubmit} style={{"marginLeft": "5px"}}><strong>Submit</strong></button>
+                  </div>
+                  <button className="button is-danger popupButton" onClick={this.handleDelete} style={{"marginTop": "15px"}}><strong>Delete Pot</strong></button>
 
           </div>
+
         </div>
         );
     }
