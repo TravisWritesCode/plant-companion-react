@@ -13,6 +13,7 @@ export default class PotAdmin extends Component {
       bkg: `${process.env.PUBLIC_URL + "pot-bkg/PlantPhoto.png"}`
     }
 
+
     setBKG(){
       var img = this.props.plantType
       var temp = img.toLowerCase()
@@ -52,12 +53,25 @@ export default class PotAdmin extends Component {
         <div>  
           <Link className="PlantName" to={{pathname:"/potHistory", state: data}}>{this.props.potName}</Link>
           <p className="plantType">{this.props.plantType}</p>
-          <div className="PlantLevels">
+          {
+            this.props.pH != null&&this.props.tds != null?
+            <div className="PlantLevels" style={{margin: "120px 0 0 0", height: "250px"}}>
+              {this.props.temp == "None" ?<h3 style={{padding: "5px"}}>Temperature: {this.temp}&deg;F</h3>:<h3 style={{padding: "5px"}}>Temperature: {this.props.temp}&deg;F</h3>}
+              {this.props.reservoirLevel == "None" ?<h3 style={{padding: "5px"}}>Reservoir Level: {this.temp}</h3>:<h3 style={{padding: "5px"}}>Reservoir Level: {this.props.reservoirLevel}</h3>}
+              <h3 style={{padding: "5px"}}>Moisture: {this.soilMoistureOutput}</h3>
+              <h3 style={{padding: "5px"}}>Light: {this.lightOutput}</h3>
+              {this.props.pH == "None" ?<h3 style={{padding: "5px"}}>pH: {this.temp}</h3>:<h3 style={{padding: "5px"}}>pH: {this.props.pH}</h3>}
+              {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>tds: {this.temp}</h3>:<h3 style={{padding: "5px"}}>tds: {this.props.tds}</h3>}
+            </div>
+            :
+            <div className="PlantLevels">
               {this.props.temp == "None" ?<h3>Temperature: {this.temp}&deg;F</h3>:<h3>Temperature: {this.props.temp}&deg;F</h3>}
               {this.props.reservoirLevel == "None" ?<h3>Reservoir Level: {this.temp}</h3>:<h3>Reservoir Level: {this.props.reservoirLevel}</h3>}
               <h3>Moisture: {this.soilMoistureOutput}</h3>
               <h3>Light: {this.lightOutput}</h3>
-          </div>
+            </div>
+          }
+          
         </div>
       </div>
     )
