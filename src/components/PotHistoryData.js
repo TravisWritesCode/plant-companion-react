@@ -30,14 +30,14 @@ export default class PotHistoryData extends Component {
         <div>
         {
             this.props.pH != null&&this.props.tds != null?
-          <div className="PotHistoryEntry" style={{gridTemplateColumns: "auto auto auto auto auto auto auto", gridGap: "40px"}}>
-            <h3>Date: {dateOutput}</h3>
+          <div className="PotHistoryEntry" style={{gridTemplateColumns: "auto auto auto auto auto", gridColumnGap: "40px", gridRowGap: "20px"}}>
+            <h3 className = "dateItem">Date: {dateOutput}</h3>
             {this.props.temp == "None" ?<h3>Temperature: {this.temp}&deg;F</h3>:<h3>Temperature: {this.props.temp}&deg;F</h3>}
             {this.props.reservoirLevel == "None" ?<h3>Reservoir Level: {this.temp}</h3>:<h3>Reservoir Level: {this.props.reservoirLevel}</h3>}
             <h3>Moisture: {this.soilMoistureOutput}</h3>
             <h3>Light: {this.lightOutput}</h3>
-            {this.props.pH == "None" ?<h3 style={{padding: "5px"}}>pH: {this.temp}</h3>:<h3>pH: {this.props.pH}</h3>}
-            {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>tds: {this.temp}</h3>:<h3>tds: {this.props.tds}</h3>}
+            {this.props.pH == "None" ?<h3 >pH: {this.temp}</h3>:<h3>pH: {this.props.pH}</h3>}
+            {this.props.tds == "None" ?<h3 >tds: {this.temp}</h3>:<h3>TDS: {this.props.tds}</h3>}
           </div>
           :
           <div className="PotHistoryEntry">

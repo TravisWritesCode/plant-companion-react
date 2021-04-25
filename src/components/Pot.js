@@ -61,7 +61,7 @@ export default class PotAdmin extends Component {
               <h3 style={{padding: "5px"}}>Moisture: {this.soilMoistureOutput}</h3>
               <h3 style={{padding: "5px"}}>Light: {this.lightOutput}</h3>
               {this.props.pH == "None" ?<h3 style={{padding: "5px"}}>pH: {this.temp}</h3>:<h3 style={{padding: "5px"}}>pH: {this.props.pH}</h3>}
-              {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>tds: {this.temp}</h3>:<h3 style={{padding: "5px"}}>tds: {this.props.tds}</h3>}
+              {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>tds: {this.temp}</h3>:<h3 style={{padding: "5px"}}>TDS: {this.props.tds}</h3>}
             </div>
             :
             <div className="PlantLevels">
