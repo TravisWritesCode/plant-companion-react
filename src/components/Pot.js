@@ -54,14 +54,15 @@ export default class PotAdmin extends Component {
           <Link className="PlantName" to={{pathname:"/potHistory", state: data}}>{this.props.potName}</Link>
           <p className="plantType">{this.props.plantType}</p>
           {
-            this.props.pH != null&&this.props.tds != null?
+            this.props.pH != null&&this.props.tds != null && this.props.humidity != null?
             <div className="PlantLevels" style={{margin: "120px 0 0 0", height: "250px"}}>
               {this.props.temp == "None" ?<h3 style={{padding: "5px"}}>Temperature: {this.temp}&deg;F</h3>:<h3 style={{padding: "5px"}}>Temperature: {this.props.temp}&deg;F</h3>}
               {this.props.reservoirLevel == "None" ?<h3 style={{padding: "5px"}}>Reservoir Level: {this.temp}</h3>:<h3 style={{padding: "5px"}}>Reservoir Level: {this.props.reservoirLevel}</h3>}
               <h3 style={{padding: "5px"}}>Moisture: {this.soilMoistureOutput}</h3>
               <h3 style={{padding: "5px"}}>Light: {this.lightOutput}</h3>
               {this.props.pH == "None" ?<h3 style={{padding: "5px"}}>pH: {this.temp}</h3>:<h3 style={{padding: "5px"}}>pH: {this.props.pH}</h3>}
-              {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>tds: {this.temp}</h3>:<h3 style={{padding: "5px"}}>TDS: {this.props.tds}</h3>}
+              {this.props.tds == "None" ?<h3 style={{padding: "5px"}}>TDS: {this.temp}</h3>:<h3 style={{padding: "5px"}}>TDS: {this.props.tds}</h3>}
+              {this.props.humidity == "None" ?<h3 style={{padding: "5px"}}>Humidity: {this.temp}</h3>:<h3 style={{padding: "5px"}}>Humidity: {this.props.humidity}</h3>}
             </div>
             :
             <div className="PlantLevels">
